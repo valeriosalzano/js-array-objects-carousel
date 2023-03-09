@@ -1,0 +1,113 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: black;
+    color: white;
+}
+
+/* utility */
+.d-none {
+    display: none;
+}
+.d-flex {
+    display: flex;
+}
+.arrow {
+    position: absolute;
+    left: 0;
+    height: 2rem;
+    width: 100%;
+    line-height: 2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: lightgray;
+    z-index: 2;
+}
+
+/* style  */
+header {
+    min-height: 100px;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+.main-container {
+    width: 90%;
+    height: 70vh;
+    margin: 2rem auto;
+}
+.slider-container {
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+#prev-arrow {
+    top: 0;
+}
+
+#next-arrow {
+    bottom: 0;
+}
+
+.slider {
+    height: 100%;
+}
+
+.slider .img-container {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.slider img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.slider .text-container {
+    position: absolute;
+    bottom : 0;
+    right: 0;
+    text-align: right;
+    padding: 2rem;
+    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+}
+.slider h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.slider-container .show {
+    display: block;
+}
+
+.thumbnails-container {
+    position: relative;
+    height: 100%;
+    width: 20%;
+}
+
+.thumbnails {
+    height: 100%;
+}
+
+.thumbnails img {
+    object-fit: cover;
+    height: calc(100% / 5);
+    width: 100%;
+    display: block;
+    background-color: black;
+    filter: opacity(0.3);
+}
+
+
+img.highlight {
+    filter: opacity(1);
+    border: 2px solid lightgray;
+}
