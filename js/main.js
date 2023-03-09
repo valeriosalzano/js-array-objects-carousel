@@ -87,3 +87,22 @@ nextArrow.addEventListener('click',
         thumbnailsContent[current].classList.add("highlight");
     }
 )
+
+// BONUS 1
+// Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
+
+thumbnailsContent.forEach( image => image.addEventListener('click', clickOnThumbnail));
+
+function clickOnThumbnail () {
+    sliderContent[current].classList.remove("show");
+    thumbnailsContent[current].classList.remove("highlight");
+    
+    // cambio "current" in base all'indice del thumbnail su cui ho cliccato
+    thumbnailsContent.forEach((element, index) => {
+        element == this ? current=index : "";
+    })
+
+    sliderContent[current].classList.add("show");
+    thumbnailsContent[current].classList.add("highlight");
+}
+
