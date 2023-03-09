@@ -1,4 +1,4 @@
-// DATA
+// *** DATA ***
 const images = [
     {
         image: 'img/01.webp',
@@ -22,7 +22,7 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-// FINE DATA
+// *** DATA FINE ***
 
 const sliderDom = document.querySelector('.slider');
 // scrivo dinamicamente tutte le img nello slider
@@ -54,39 +54,13 @@ const thumbnailsContent = document.querySelectorAll(".thumbnails img");
 // rendo evidenziata la prima immagine
 thumbnailsContent[current].classList.add("highlight");
 
-// prev arrow
+// prev arrow (al click richiamo la funzione "prevImg")
 const prevArrow = document.getElementById("prev-arrow");
-prevArrow.addEventListener('click',
-    function(){
-        sliderContent[current].classList.remove("show");
-        thumbnailsContent[current].classList.remove("highlight");
-        // ciclo infinito
-        if (current == 0){
-            current = sliderContent.length - 1;
-        } else {
-            current--;
-        }
-        sliderContent[current].classList.add("show");
-        thumbnailsContent[current].classList.add("highlight");
-    }
-)
+prevArrow.addEventListener('click', prevImg)
 
-// next arrow
+// next arrow (al click richiamo la funzione "nextImg")
 const nextArrow = document.getElementById("next-arrow");
-nextArrow.addEventListener('click',
-    function(){
-        sliderContent[current].classList.remove("show");
-        thumbnailsContent[current].classList.remove("highlight");
-        // ciclo infinito
-        if (current == sliderContent.length - 1){
-            current = 0;
-        } else {
-            current++;
-        }
-        sliderContent[current].classList.add("show");
-        thumbnailsContent[current].classList.add("highlight");
-    }
-)
+nextArrow.addEventListener('click', nextImg)
 
 // BONUS 1
 // Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
@@ -106,3 +80,41 @@ function clickOnThumbnail () {
     thumbnailsContent[current].classList.add("highlight");
 }
 
+// BONUS 2
+// Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+
+let autoPlaySeconds = 3;
+setInterval(nextImg, autoPlaySeconds*1000);
+
+
+
+
+// *** LISTA FUNZIONI ***
+
+// funzione che fa passare all'immagine successiva
+function nextImg (){
+    sliderContent[current].classList.remove("show");
+    thumbnailsContent[current].classList.remove("highlight");
+    // ciclo infinito
+    if (current == sliderContent.length - 1){
+        current = 0;
+    } else {
+        current++;
+    }
+    sliderContent[current].classList.add("show");
+    thumbnailsContent[current].classList.add("highlight");
+}
+
+// funzione che fa passare alla precedente immagine
+function prevImg (){
+    sliderContent[current].classList.remove("show");
+    thumbnailsContent[current].classList.remove("highlight");
+    // ciclo infinito
+    if (current == 0){
+        current = sliderContent.length - 1;
+    } else {
+        current--;
+    }
+    sliderContent[current].classList.add("show");
+    thumbnailsContent[current].classList.add("highlight");
+}
