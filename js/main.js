@@ -84,9 +84,23 @@ function clickOnThumbnail () {
 // Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
 
 let autoPlaySeconds = 3;
-setInterval(nextImg, autoPlaySeconds*1000);
+let autoPlayId;
+let autoPlayDirection;
+
+autoPlayForward();
 
 
+// BONUS 3:
+// Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
+
+const playBtn = document.getElementById('play');
+playBtn.addEventListener('click', autoPlayForward)
+
+const pauseBtn = document.getElementById('pause');
+pauseBtn.addEventListener('click', autoPlayPause)
+
+const invertBtn = document.getElementById('invert');
+invertBtn.addEventListener('click', autoPlayInvert)
 
 
 // *** LISTA FUNZIONI ***
@@ -117,4 +131,38 @@ function prevImg (){
     }
     sliderContent[current].classList.add("show");
     thumbnailsContent[current].classList.add("highlight");
+}
+
+// funzione che fa partire l'autoplay
+function autoPlayForward (){
+    if(!autoPlayId){
+        autoPlayId = setInterval(nextImg, autoPlaySeconds*1000);
+        autoPlayDirection = 'forward'
+    }
+}
+
+// funzione che arresta l'autoplay
+function autoPlayPause (){
+    clearInterval(autoPlayId);
+    autoPlayId = null;
+}
+
+//funzione che fa partire l'autoplay al contrario
+function autoPlayBackward (){
+    if(!autoPlayId){
+        autoPlayId = setInterval(prevImg, autoPlaySeconds*1000);
+        autoPlayDirection = 'backward'
+    }
+}
+
+// funzione che inverte l'ordine di scorrimento delle immagini
+function autoPlayInvert (){
+    if (autoPlayId){
+        autoPlayPause();
+        if (autoPlayDirection == 'forward'){
+            autoPlayBackward();
+        } else {
+            autoPlayForward();
+        }
+    }
 }

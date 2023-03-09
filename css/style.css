@@ -26,6 +26,7 @@ html {
     background-color: rgba(0, 0, 0, 0.8);
     color: lightgray;
     z-index: 2;
+    cursor: pointer;
 }
 
 /* style  */
@@ -112,3 +113,18 @@ img.highlight {
     filter: opacity(1);
     border: 2px solid lightgray;
 }
+
+.btns-container {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.btns-container > * {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#play {
+    margin: 0 4rem;
+    font-size: 2.5rem;
+}
+
